@@ -46,10 +46,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section id="etusivu" className="min-h-[85vh] relative flex items-center justify-center pt-20 pb-16 overflow-hidden">
-        {/* Background layering */}
-        <div className="absolute inset-0 z-0 bg-cover bg-center bg-[url('./assets/kuopio.jpg')]"></div>
-        <div className="absolute inset-0 z-0 bg-brand-bg/95"></div>
+      <section id="etusivu" className="min-h-[85vh] relative flex items-center justify-center pt-20 pb-16 overflow-hidden bg-brand-bg">
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center animate-fade-in-up mt-10">
           <span className="inline-block px-4 py-1.5 border-2 border-brand text-brand font-bold text-sm tracking-widest uppercase mb-8">
@@ -71,12 +68,16 @@ function App() {
       {/* About Section */}
       <section id="tietoa" className="py-20 md:py-24 bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div className="order-2 lg:order-1">
+          <div className="order-2 lg:order-1 flex flex-col items-center">
             <img
               src={kuva}
               alt="Jari Heikkinen, Kaupanvahvistaja"
-              className="w-full max-w-sm mx-auto object-cover rounded-md shadow-md border border-gray-100"
+              className="w-full max-w-sm mx-auto object-cover rounded-md shadow-md border border-gray-100 mb-6"
             />
+            <div className="flex items-center gap-3 text-[#1f2937] font-semibold text-lg bg-gray-50 px-6 py-3 rounded-md border border-gray-200 shadow-sm">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <a href="tel:04578747473" className="hover:text-brand transition-colors">045 787 47473</a>
+            </div>
           </div>
           <div className="order-1 lg:order-2 flex flex-col text-center lg:text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1f2937] mb-6">Henkilökohtaista palvelua</h2>
@@ -197,17 +198,17 @@ function App() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-500 mb-1 text-sm uppercase tracking-wide">Puhelin</h4>
-                    <a href="tel:0401234567" className="text-[#1f2937] hover:text-brand font-medium text-lg">040 123 4567</a>
+                    <a href="tel:04578747473" className="text-[#1f2937] hover:text-brand font-medium text-lg">045 787 47473</a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 bg-brand-bg text-brand border border-gray-200 rounded-md">
+                <div className="flex items-start gap-4 w-full">
+                  <div className="p-2.5 bg-brand-bg text-brand border border-gray-200 rounded-md shrink-0">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                   </div>
-                  <div>
+                  <div className="min-w-0 pr-2">
                     <h4 className="font-semibold text-gray-500 mb-1 text-sm uppercase tracking-wide">Sähköposti</h4>
-                    <a href="mailto:jari@esimerkki.fi" className="text-[#1f2937] hover:text-brand font-medium text-lg">jari@esimerkki.fi</a>
+                    <a href="mailto:jari.heikkinen@kaupanvahvistajakuopio.fi" className="text-[#1f2937] hover:text-brand font-medium text-lg break-all inline-block w-full">jari.heikkinen@kaupanvahvistajakuopio.fi</a>
                   </div>
                 </div>
 
@@ -225,19 +226,22 @@ function App() {
               {/* Form */}
               <div className="bg-white p-8 border border-gray-100 rounded-md shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)]">
                 <h3 className="text-xl font-bold text-[#1f2937] border-b border-gray-100 pb-4 mb-6">Jätä viesti</h3>
-                <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-4">
+                <form action="https://formspree.io/f/xaqpynwb" method="POST" className="flex flex-col gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5" htmlFor="name">Nimi</label>
-                    <input type="text" id="name" className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-gray-800" placeholder="Etunimi Sukunimi" required />
+                    <input type="text" id="name" name="name" className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-gray-800" placeholder="Etunimi Sukunimi" required />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5" htmlFor="email">Sähköpostiosoite</label>
-                    <input type="email" id="email" className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-gray-800" placeholder="sahkoposti@esimerkki.fi" required />
+                    <input type="email" id="email" name="email" className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-gray-800" placeholder="sahkoposti@esimerkki.fi" required />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5" htmlFor="message">Viesti</label>
-                    <textarea id="message" rows="4" className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-gray-800 resize-y" placeholder="Kerro lyhyesti kiinteistökaupastasi..." required></textarea>
+                    <textarea id="message" name="message" rows="4" className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors text-gray-800 resize-y" placeholder="Kerro lyhyesti kiinteistökaupastasi..." required></textarea>
                   </div>
+                  {/* Optional: Add a hidden subject field for Formspree emails */}
+                  <input type="hidden" name="_subject" value="Uusi yhteydenotto kaupanvahvistajan kotisivuilta!" />
+
                   <button type="submit" className="w-full bg-brand hover:bg-brand-hover text-white font-bold text-lg py-3.5 rounded-md transition-colors mt-2">
                     Lähetä viesti
                   </button>
