@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Exclude user provided text file
+tekstit.txt
+
+# Unused legacy files
+src/App.css
+src/index-v2.css
